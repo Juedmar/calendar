@@ -5,7 +5,7 @@
 </head>
 
 
-<body style="background: #EEE;">
+<body style="background: #EEE;" onload="highlightWeek()">
 <p><title>CALENDAR: English 2 - II, 2026</title></p>
 
 <!-- START OF SCHEDULE DIV -->
@@ -16,7 +16,7 @@
 <!-- START OF TITLE -->
 <!-- START OF TITLE -->
 
-<table cellpadding="8" cellspacing="0" style="width: 96%; font-family: Verdana, Tahoma; font-size: 12; color: white; background: #0F56A2; border: 2px solid #FF3300; table-layout: fixed; border-collapse: collapse; text-align: center;">
+<table cellpadding="8" cellspacing="0" style="width: 99%; font-family: Verdana, Tahoma; font-size: 12; color: white; background: #0F56A2; border: 2px solid #FF3300; table-layout: fixed; border-collapse: collapse; text-align: center;">
 <tbody>
 <tr>
  <td align="center" style="background-color: #FF3300;"><p><b><big>BASIC ENGLISH II - II, 2026</big></b><br><b>BOOK:</b> "American English File 1". Latham-Koenig, Christina - Oxford University Press (2019, 3rd Edition).</p></td>
@@ -28,7 +28,7 @@
 <!-- START OF SCHEDULE TABLE -->
 <!-- START OF SCHEDULE TABLE -->
 
-<table cellpadding="4" cellspacing="0" style="width: 95%; font-family: Verdana, Tahoma; font-size: 12; color: white; background: #0F56A2; border: 2px solid #FF3300; border-collapse: collapse; table-layout: fixed; text-align: center; word-wrap: break-word;">
+<table cellpadding="4" cellspacing="0" style="width: 98%; font-family: Verdana, Tahoma; font-size: 12; color: white; background: #0F56A2; border: 2px solid #FF3300; border-collapse: collapse; table-layout: fixed; text-align: center; word-wrap: break-word;">
 <tbody>
 
 <!-- FIRST ROW -->
@@ -263,18 +263,14 @@
 
 
 <script type="text/javascript">
-window.onload = function() {
-highlightCell()
+let thisDate = new Date() 
+let thisMonth = thisDate.getMonth()+1
+let thisDay = thisDate.getDate()
+let now = doubleDigit(thisMonth)+""+doubleDigit(thisDay)
+let currentWeek
+// now = 0921
 
- function highlightCell() {
- let thisDate = new Date() 
- let thisMonth = thisDate.getMonth()+1
- let thisDay = thisDate.getDate()
- let now = doubleDigit(thisMonth)+""+doubleDigit(thisDay)
- let currentWeek
-
- // now = 0921
-
+function highlightWeek() {
  if (now >= 0803 && now < 0810 ) { currentWeek = week1 }
  if (now >= 0810 && now < 0817 ) { currentWeek = week2 }
  if (now >= 0817 && now < 0824 ) { currentWeek = week3 }
@@ -293,11 +289,14 @@ highlightCell()
  if (now >= 1116 && now < 1123 ) { currentWeek = week16 }
  if (now >= 1123 && now < 1130 ) { currentWeek = week17 }
  if (now >= 1130 && now < 1204 ) { currentWeek = week18 }
- if (currentWeek !== undefined) { currentWeek.style.border = "2px solid yellow"
+ if (currentWeek !== undefined) {
+  currentWeek.style.border = "2px solid yellow"
+  currentWeek.style.borderWidth = "6px 2px"
+  currentWeek.style.borderColor = "yellow #FF3300"
+  currentWeek.style.background = "red"
  }
 }
 
 function doubleDigit(i) { if (i < 10) { i = "0" + i } return i }
 
-}
 </script>
