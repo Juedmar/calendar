@@ -261,14 +261,13 @@
 </body>
 
 
-
 <script type="text/javascript">
 let thisDate = new Date() 
 let thisMonth = thisDate.getMonth()+1
 let thisDay = thisDate.getDate()
 let now = doubleDigit(thisMonth)+""+doubleDigit(thisDay)
 let currentWeek
-// now = 0921
+// now = 0907
 
 function highlightWeek() {
  if (now >= 0803 && now < 0810 ) { currentWeek = week1 }
@@ -289,11 +288,15 @@ function highlightWeek() {
  if (now >= 1116 && now < 1123 ) { currentWeek = week16 }
  if (now >= 1123 && now < 1130 ) { currentWeek = week17 }
  if (now >= 1130 && now < 1204 ) { currentWeek = week18 }
+
  if (currentWeek !== undefined) {
   currentWeek.style.border = "2px solid yellow"
   currentWeek.style.borderWidth = "6px 2px"
   currentWeek.style.borderColor = "yellow #FF3300"
+  currentWeek.style.borderRadius = "12px 6px"
   currentWeek.style.background = "red"
+  if (currentWeek == week7 || currentWeek == week11) { currentWeek.style.background = "#00CC00" }
+  if (currentWeek == week6 || currentWeek == week10 || currentWeek == week16) { currentWeek.style.background = "red" }
  }
 }
 
